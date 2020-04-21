@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single"></group>
+    <!--    single表示菜单项只能单选-->
+    <item android:id="@+id/publish_goods"
+        android:title="发布交易"
+        android:icon="@drawable/ic_launcher_foreground"
+        app:showAsAction="never" ></item>
+    <item android:icon="@drawable/ic_launcher_foreground"
+        android:title="发布拼车"
+        android:id="@+id/publish_carpool"
+        app:showAsAction="never" ></item>
+
+</menu>
