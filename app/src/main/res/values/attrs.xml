@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InfoItem">
+        <attr name="title" format="string"></attr>
+        <attr name="title_size" format="dimension"></attr>
+        <attr name="title_color" format="color"></attr>
+        <attr name="edt_content" format="string"></attr>
+        <attr name="edt_text_size" format="dimension"></attr>
+        <attr name="edt_text_color" format="color"></attr>
+        <attr name="edt_hint_content" format="string"></attr>
+        <attr name="edt_hint_text_color" format="color"></attr>
+        <attr name="isEditable" format="boolean"></attr>
+        <attr name="jt_visible" format="boolean"></attr>
+    </declare-styleable>
+    <declare-styleable name="BarTitle">
+        <attr name="bartitle" format="string"></attr>
+        <attr name="isVisible" format="boolean"></attr>
+        <attr name="isClickable" format="boolean"></attr>
+    </declare-styleable>
+</resources>

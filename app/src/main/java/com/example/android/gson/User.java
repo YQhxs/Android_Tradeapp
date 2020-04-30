@@ -1,13 +1,38 @@
-package com.example.android.util;
+package com.example.android.gson;
 
-public class User {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class User implements Serializable{
+    private int id;
     private String user_ID;
     private String password;
     private String nick_NAME;
     private String photo;
     private String sex;
+
     private String introduction;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", user_ID='" + user_ID + '\'' +
+                ", password='" + password + '\'' +
+                ", nick_NAME='" + nick_NAME + '\'' +
+                ", photo='" + photo + '\'' +
+                ", sex='" + sex + '\'' +
+                ", introduction='" + introduction + '\'' +
+                '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getUser_ID() {
         return user_ID;
     }
@@ -55,4 +80,6 @@ public class User {
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
     }
+
+
 }

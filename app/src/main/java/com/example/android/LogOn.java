@@ -1,13 +1,9 @@
 package com.example.android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,14 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.util.GetContext;
 import com.example.android.util.ActivityCollector;
 import com.example.android.util.BaseActivity;
 import com.example.android.util.GetContext;
 import com.example.android.util.HttpUtil;
 import com.example.android.util.LogUtil;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -30,12 +23,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-
 import okhttp3.Call;
 import okhttp3.Callback;
-
 import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -45,7 +35,6 @@ public class LogOn extends BaseActivity implements View.OnClickListener {
     private EditText accountEdit;
     private EditText passwordEdit;
     private EditText nextPasswordEdit;
-    private SharedPreferences.Editor editor;
     private HttpUtil httpUtil = new HttpUtil();
     private MediaType JSON = MediaType.parse("application/json;charset=UTF-8");
     private static final String TAG = "LogOn";
@@ -108,11 +97,11 @@ public class LogOn extends BaseActivity implements View.OnClickListener {
 
                         //状态码设计有问题
                         if (jsonObject.has("success_code")) {
-                            //并放入本地user文件下，充当缓存
-                            editor = getSharedPreferences("user", MODE_PRIVATE).edit();
-                            editor.putString("account", account);
-                            editor.putString("password", password);
-                            editor.apply();
+//                            //因为注册之后还要带数据跳转到登录页面，因此不需要添加到缓存
+//                            editor = getSharedPreferences("user", MODE_PRIVATE).edit();
+//                            editor.putString("account", account);
+//                            editor.putString("password", password);
+//                            editor.apply();
 
                             Intent intent = new Intent();
                             intent.putExtra("return_account", account);

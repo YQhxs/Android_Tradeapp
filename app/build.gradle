@@ -36,4 +36,5 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.0.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
 }

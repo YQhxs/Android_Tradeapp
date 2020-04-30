@@ -1,12 +1,11 @@
 package com.example.android;
 
 
-import androidx.annotation.Nullable;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,13 +14,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 
-
+import com.example.android.gson.User;
 import com.example.android.util.BaseActivity;
 import com.example.android.util.GetContext;
 import com.example.android.util.HttpUtil;
 import com.example.android.util.LogUtil;
-import com.example.android.util.User;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -29,16 +28,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class LogIn extends BaseActivity implements View.OnClickListener {
     private EditText accountEdit;
@@ -47,7 +42,6 @@ public class LogIn extends BaseActivity implements View.OnClickListener {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private static final String TAG = "LogIn";
-    private HttpUtil httpUtil = new HttpUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,22 +79,32 @@ public class LogIn extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_login:
-                String account = accountEdit.getText().toString();
-                String password = passwordEdit.getText().toString();
+                final String account = accountEdit.getText().toString();
+                final String password = passwordEdit.getText().toString();
                 editor = getSharedPreferences("user", MODE_PRIVATE).edit();
 
                 //向服务端验证用户,content_type需要改进
-                Map map = new HashMap<>();
-                map.put("user_id", account);
-                map.put("password", password);
-                Gson gson = new Gson();
-                String param = gson.toJson(map);
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("user_id", account);
+                    jsonObject.put("password", password);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+//                Map map = new HashMap<>();
+//                map.put("user_id", account);
+//                map.put("password", password);
+//                Gson gson = new Gson();
+//                String param = gson.toJson(jsonObject);
+                String param = jsonObject.toString();
+                LogUtil.d(TAG, "param-----" + param);
                 RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), param);
                 Request request = new Request.Builder()
                         .url("http://39.97.173.40:8999/login")
                         .post(requestBody)
                         .build();
-                httpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
+                HttpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
 
                     @Override
                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -110,7 +114,10 @@ public class LogIn extends BaseActivity implements View.OnClickListener {
                             JSONObject jsonObject = new JSONObject(resposedata);
 
                             if (jsonObject.has("error_code")) {
+                                Looper.prepare();
                                 Toast.makeText(GetContext.getContext(), "账户或密码错误", Toast.LENGTH_SHORT).show();
+                                Looper.loop();
+
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -120,18 +127,15 @@ public class LogIn extends BaseActivity implements View.OnClickListener {
                                 });
                             } else {
                                 if (rememberPassword.isChecked()) {
+                                    editor.putString("account", account);
+                                    editor.putString("password", password);
                                     editor.putBoolean("is_remember", true);
                                     editor.apply();
                                 }
                                 Gson gson = new Gson();
                                 User user = gson.fromJson(resposedata, User.class);
-                                Intent intent = new Intent(GetContext.getContext(), Trade.class);
-                                intent.putExtra("user_nickName", user.getNick_NAME());
-//                                后续有服务器图片时再加上
-//                                if(user.getPhoto() != ""){
-//                                    intent.putExtra("user_head", user.getPhoto());
-//                                }
-
+                                Intent intent = new Intent(GetContext.getContext(), Home.class);
+                                intent.putExtra("user_info", user);
                                 startActivity(intent);
                             }
                         } catch (JSONException e) {
@@ -156,18 +160,14 @@ public class LogIn extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 1:
-                if (resultCode == RESULT_OK) {
-                    String account = data.getStringExtra("return_account");
-                    String password = data.getStringExtra("return_password");
-                    LogUtil.d(TAG, "return_account:" + account);
-                    LogUtil.d(TAG, "return_password:" + password);
-                    accountEdit.setText(account);
-                    passwordEdit.setText(password);
-                }
-                break;
-        }
 
+        if (resultCode == RESULT_OK && data != null) {
+            String account = data.getStringExtra("return_account");
+            String password = data.getStringExtra("return_password");
+            LogUtil.d(TAG, "return_account:" + account);
+            LogUtil.d(TAG, "return_password:" + password);
+            accountEdit.setText(account);
+            passwordEdit.setText(password);
+        }
     }
 }

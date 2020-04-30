@@ -22,28 +22,35 @@
                 android:background="?attr/colorPrimary"
                 app:layout_scrollFlags="enterAlways|scroll|snap"
                 >
+
                 <TextView
-                    android:id="@+id/toolbar_title"
+                    android:id="@+id/toolbar_trade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:singleLine="true"
+                    android:layout_marginLeft="90dp"
+                    android:clickable="true"
+                    android:text="交易"
                     android:textColor="#000000"
                     android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/toolbar_carpool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:clickable="true"
+                    android:text="拼车"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh"
+        <FrameLayout
+            android:id="@+id/replace"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </FrameLayout>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
