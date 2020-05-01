@@ -2,9 +2,7 @@ package com.example.android.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,7 +26,9 @@ public class ImageCompress {
             long length = baos.toByteArray().length;
         }
         File compressimagedir = new File(GetContext.getContext().getExternalCacheDir().getAbsolutePath() + File.separator + "compressimages");
-        compressimagedir.mkdirs();
+        if (!compressimagedir.exists()) {
+            compressimagedir.mkdirs();
+        }
         String name = outputpath.split("/")[outputpath.split("/").length-1];
         LogUtil.e("-----划分后文件名字",name);
         File file = new File(compressimagedir,name);

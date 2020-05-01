@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!--requestLegacyExternalStorage这个参数解决Androidx外部存储访问权限-->
     <application
         android:name=".util.GetContext"
         android:allowBackup="true"
@@ -19,20 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home"></activity>
+
         <activity android:name=".changeinfo.ChangeIntroduction" />
         <activity android:name=".changeinfo.ChangeName" />
         <activity android:name=".PublishGoods" />
         <activity android:name=".PublishCar" />
-        <activity
-            android:name=".Info"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.media.action.IMAGE_CAPTURE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Info" />
+        <activity android:name=".Home" />
         <activity android:name=".LogOn" />
         <activity android:name=".LogIn">
             <intent-filter>
@@ -40,7 +33,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- FileProvider配置访问路径，适配7.0及其以上 -->
+        </activity>
+        <!-- FileProvider配置访问路径，适配7.0及其以上 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"

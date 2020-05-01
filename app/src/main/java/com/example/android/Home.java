@@ -1,17 +1,5 @@
 package com.example.android;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +10,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -145,25 +144,14 @@ public class Home extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private void showInfo(User user) {
-//        更换头像
-        String header_image = user.getPhoto();
-        if (!header_image.equals("未设置")) {
-            RequestOptions options = new RequestOptions().placeholder(R.drawable.touxiang);
-            Glide.with(GetContext.getContext()).load("http://39.97.173.40:8999/file/" + header_image).apply(options).into(headerimage);
-        }
-        String header_Name = user.getNick_NAME();
-        headername = headerLayout.findViewById(R.id.header_name);
-        headername.setText(header_Name);
-    }
+
     @Override
     public void onClick(View v) {
-        toolbar_trade.setTextColor(getResources().getColor(R.color.black0));
-        toolbar_carpool.setTextColor(getResources().getColor(R.color.black0));
         switch (v.getId()){
             case R.id.toolbar_trade:
                 toolbar_trade.setTextColor(getResources().getColor(R.color.colorAccent));
-                if(tradeCanFresh == true){
+                toolbar_carpool.setTextColor(getResources().getColor(R.color.black0));
+                if (tradeCanFresh) {
                     TradeFragment tradeFragment = (TradeFragment) getSupportFragmentManager().findFragmentByTag("fragment1");
                     tradeFragment.refresh();
                 }else {
@@ -172,8 +160,9 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 }
                 break;
             case R.id.toolbar_carpool:
+                toolbar_trade.setTextColor(getResources().getColor(R.color.black0));
                 toolbar_carpool.setTextColor(getResources().getColor(R.color.colorAccent));
-                if(carCanFresh == true){
+                if (carCanFresh) {
                     Toast.makeText(this,"刷新",Toast.LENGTH_SHORT).show();
                 }else {
 
@@ -273,7 +262,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        LogUtil.e("---", "Trade接收Info传回来的状态码，状态码表示Info信息是否改变" + resultCode);
+        LogUtil.e("---", "Home接收Info传回来的状态码，状态码表示Info信息是否改变" + resultCode);
         if (resultCode == RESULT_OK) {
             JSONObject jsonObject = new JSONObject();
             try {
@@ -311,5 +300,17 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 }
             });
         }
+    }
+
+    private void showInfo(User user) {
+//        更换头像
+        String header_image = user.getPhoto();
+        if (!header_image.equals("未设置")) {
+            RequestOptions options = new RequestOptions().placeholder(R.drawable.touxiang);
+            Glide.with(GetContext.getContext()).load("http://39.97.173.40:8999/file/" + header_image).apply(options).into(headerimage);
+        }
+        String header_Name = user.getNick_NAME();
+        headername = headerLayout.findViewById(R.id.header_name);
+        headername.setText(header_Name);
     }
 }

@@ -191,7 +191,7 @@ public class Info extends BaseActivity implements View.OnClickListener {
             }
         });
 
-        Button cancel_button = (Button) layout.findViewById(R.id.cancel);
+        Button cancel_button = layout.findViewById(R.id.cancel);
         cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -205,22 +205,24 @@ public class Info extends BaseActivity implements View.OnClickListener {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        LogUtil.e("-------授权请求吗是", "" + requestCode);
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     PhotoUtil.openAlbum(Info.this, 1);
                 } else {
-                    Toast.makeText(GetContext.getContext(), "你拒绝了权限", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GetContext.getContext(), "无法使用相册", Toast.LENGTH_SHORT).show();
                 }
                 break;
-//            case 2:
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    LogUtil.e("----我同意了授权", "");
-//                    photuri = PhotoUtil.start_camera(Info.this, 2);
-//                } else {
-//                    Toast.makeText(GetContext.getContext(), "你拒绝了权限", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
+            case 2:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    LogUtil.e("-------进入判断了么相机权限1", "--------");
+                    photopath = PhotoUtil.start_camera(Info.this, 2);
+                } else {
+                    Toast.makeText(GetContext.getContext(), "拒绝后无法拍照设置头像", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
         }
     }
 
@@ -275,7 +277,7 @@ public class Info extends BaseActivity implements View.OnClickListener {
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
