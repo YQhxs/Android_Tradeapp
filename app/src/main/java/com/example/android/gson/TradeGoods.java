@@ -3,6 +3,7 @@ package com.example.android.gson;
 import java.io.Serializable;
 
 public class TradeGoods implements Serializable {
+    //    这里因为和gson字段名字一致，所以没用@SerialName()。
     private int id;
     private String nick_NAME;
     private String sex;

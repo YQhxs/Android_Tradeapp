@@ -1,6 +1,6 @@
 package com.example.android;
 
-import android.Manifest;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -8,8 +8,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,13 +68,8 @@ public class Info extends BaseActivity implements View.OnClickListener {
     private PopupWindow popupWindow;
     //            网络加载慢，设置占位图
     private RequestOptions options = new RequestOptions().placeholder(R.drawable.touxiang);
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    //    private File mfile;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
     private String photopath;
+//    private String bigAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +136,13 @@ public class Info extends BaseActivity implements View.OnClickListener {
                 show_popup_window(findViewById(R.id.info));
                 break;
             case R.id.info_image:
-//              发大图片
+//              if(user.getPhoto().equals("未设置")){
+//                  new AvatarScan(GetContext.getContext(),R.drawable.touxiang).show();
+//              }else {
+////                  先不考虑本地缓存清掉后，图片不存在的问题
+//                  new AvatarScan(GetContext.getContext(),bigAvatar).show();
+//              }
+                imgMax(findViewById(R.id.info), user.getPhoto());
                 break;
             case R.id.edit_name:
                 changeName();
@@ -155,16 +158,105 @@ public class Info extends BaseActivity implements View.OnClickListener {
 
     private void show_popup_window(View view) {
         LogUtil.e("------参考view为空对象", ":" + view);
-        if (popupWindow != null && popupWindow.isShowing()) {
-            return;
-        }
+//        if (popupWindow != null && popupWindow.isShowing()) {
+//            return;
+//        }
         LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.window_popup, null);
         popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setAnimationStyle(R.style.Popupwindow);
+        //点击外部弹出不消失
+        popupWindow.setFocusable(false);
+        popupWindow.setOutsideTouchable(false);
+        //设置透明背景布局
+        setTransparentBg();
+
         int[] location = new int[2];
         view.getLocationOnScreen(location);
         popupWindow.showAtLocation(view, Gravity.LEFT | Gravity.BOTTOM, 0, -location[1]);
         setButtonListeners(layout);
+    }
+
+
+    /**
+     * 点击查看大图
+     */
+    public void imgMax(View view, String bigAvatar) {
+        LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_avatar_scan, null);
+        int height = getWindowManager().getDefaultDisplay().getHeight();
+        popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, height * 3 / 4);
+        ImageView img = layout.findViewById(R.id.large_image);
+
+//        popupWindow.setHeight();
+        popupWindow.setAnimationStyle(R.style.Popupwindow);
+        //点击外部弹出不消失
+        popupWindow.setFocusable(false);
+        popupWindow.setOutsideTouchable(false);
+        //设置透明背景布局
+        setTransparentBg();
+
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        if (!bigAvatar.equals("未设置")) {
+            Glide.with(GetContext.getContext()).load("http://39.97.173.40:8999/file/" + bigAvatar).into(img);
+        } else {
+            Glide.with(GetContext.getContext()).load(R.drawable.touxiang).into(img);
+        }
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (popupWindow != null && popupWindow.isShowing()) {
+                    popupWindow.dismiss();
+                }
+            }
+        });
+
+//
+//        LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_avatar_scan, null);
+//        // 加载自定义的布局文件
+//        final AlertDialog dialog = new AlertDialog.Builder(GetContext.getContext(),R.style.Theme_AppCompat_Light_Dialog_Alert).create();
+//        ImageView img = layout.findViewById(R.id.large_image);
+//        if(!bigAvatar.equals("未设置")){
+//            Glide.with(GetContext.getContext()).load("http://39.97.173.40:8999/file/"+bigAvatar).into(img);
+//        }else {
+//            Glide.with(GetContext.getContext()).load(R.drawable.touxiang).into(img);
+//        }
+//        dialog.setView(layout); // 自定义dialog
+//        dialog.show();
+//        // 点击布局文件（也可以理解为点击大图）后关闭dialog，这里的dialog不需要按钮
+//        img.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View paramView) {
+//
+//                dialog.cancel();
+//            }
+//        });
+    }
+
+    //设置背景透明，且不可点击
+    private void setTransparentBg() {
+        // 设置背景颜色变暗
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = 0.7f;//调节透明度
+        getWindow().setAttributes(lp);
+        //监听弹窗
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                //弹窗关闭  dismiss()时恢复原样
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp.alpha = 1f;
+                getWindow().setAttributes(lp);
+            }
+        });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        //拦截弹窗外部点击事件
+        if (popupWindow != null && popupWindow.isShowing()) {
+            return false;
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     private void setButtonListeners(LinearLayout layout) {
@@ -301,8 +393,7 @@ public class Info extends BaseActivity implements View.OnClickListener {
                     image_uri = data.getData();
                     LogUtil.e("----从相册返回的图片uri", "" + image_uri);
                     Glide.with(this).load(image_uri).apply(options).into(image_linearViewById);
-//                    uploadfile(new File(FileUtils.getFilePathByUri(GetContext.getContext(), image_uri)));
-//                    ImageCompress.getimage(photopath)
+
 //                    压缩图片并返回所在路径，然后再上传服务器
                     uploadfile(ImageCompress.getimage(FileUtils.getFilePathByUri(GetContext.getContext(), image_uri)));
                 }
@@ -310,8 +401,6 @@ public class Info extends BaseActivity implements View.OnClickListener {
             case 2:
                 if (resultCode == RESULT_OK) {
 //                    LogUtil.e("----从相机拍摄返回的图片路径", "" + mfile.getAbsolutePath());
-//                    Glide.with(this).load(mfile.getAbsolutePath()).apply(options).into(image_linearViewById);
-//                    uploadfile(mfile.getAbsolutePath());
                     LogUtil.e("----从相机拍摄返回的图片路径", "" + photopath);
                     Glide.with(this).load(photopath).apply(options).into(image_linearViewById);
 
@@ -331,6 +420,8 @@ public class Info extends BaseActivity implements View.OnClickListener {
                 String introduction = data.getStringExtra("introduction");
                 intro_itemViewById.setText(introduction);
                 user.setIntroduction(introduction);
+                break;
+            case 5:
                 break;
         }
     }
@@ -419,21 +510,17 @@ public class Info extends BaseActivity implements View.OnClickListener {
                 }.getType());
                 final String path = images.getIamgespath().get(0);
                 LogUtil.e("----上传文件后返回的图片数组，这里只有一个头像", ":" + path);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
                 user.setPhoto(path);
                 updateimage();
                 ischanged = true;
-//                    }
-//                });
+
             }
         });
 
     }
 
     private void updateimage() {
-//
+//向服务器相应用户更新头像路径；
         Gson gson = new Gson();
         String param = gson.toJson(user);
         LogUtil.e("-----在Info更新图片后观察photo值", "param-----" + param);

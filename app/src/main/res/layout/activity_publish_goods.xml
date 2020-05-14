@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PublishGoods">
+    tools:context=".PublishCar">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.example.android.widget.InfoTitle
+        android:id="@+id/publish_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:bartitle="发布交易信息"></com.example.android.widget.InfoTitle>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:text="测试文字"></EditText>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nine_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="价格:"></TextView>
+
+        <EditText
+            android:id="@+id/carpool_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="0.00"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="分类"></TextView>
+
+        <Spinner
+            android:id="@+id/category_spinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:entries="@array/allCategory"></Spinner>
+    </LinearLayout>
+</LinearLayout>
