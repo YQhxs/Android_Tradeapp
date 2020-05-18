@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -31,6 +30,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull GoodsAdapter.ViewHolder holder, int position) {
         TradeGoods good = mgoodsList.get(position);
+        holder.goods_title.setId(good.getId());
         holder.goods_title.setText(good.getTitle());
         holder.solder_nickname.setText(good.getNick_NAME());
 //        后期改动需要把TradeGoods里面的url改成string类型，把请求回来的数据放入goodlist；
@@ -48,11 +48,10 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
         }
         View view = LayoutInflater.from(mcontext).inflate(R.layout.goods_item_layout, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int postion = holder.getAdapterPosition();
-                Toast.makeText(v.getContext(), "这是第" + postion + "个子项", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mcontext, "交易信息id为" + holder.goods_title.getId(), Toast.LENGTH_SHORT).show();
             }
         });
         return holder;
@@ -60,14 +59,12 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        CardView cardView;
         ImageView goods_img;
         CircleImageView solder_head;
         TextView goods_title,solder_nickname;
         public ViewHolder(@NonNull View itemView) {
 //            布局外壳，一个个view没有数据
             super(itemView);
-            cardView = (CardView) itemView;
             goods_img = itemView.findViewById(R.id.goods_image);
             goods_title  = itemView.findViewById(R.id.goods_name);
             solder_head = itemView.findViewById(R.id.solder_head);

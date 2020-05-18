@@ -20,13 +20,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.android.gson.User;
 import com.example.android.ui.CarPoolFragment;
 import com.example.android.ui.TradeFragment;
+import com.example.android.ui.history.HistoryCarPool;
+import com.example.android.ui.history.HistoryGoods;
 import com.example.android.util.ActivityCollector;
 import com.example.android.util.BaseActivity;
 import com.example.android.util.GetContext;
@@ -53,7 +54,6 @@ public class Home extends BaseActivity implements View.OnClickListener {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private static final String TAG = "Trade";
-    private SwipeRefreshLayout swipeRefreshLayout;
 
     // 定义一个变量，来标识是否退出
     private static boolean isExit = false;
@@ -79,19 +79,19 @@ public class Home extends BaseActivity implements View.OnClickListener {
             //填写页面跳转逻辑
             switch (menuItem.getItemId()) {
                 case R.id.nav_goods:
-                    Toast.makeText(GetContext.getContext(),"修改左边导航栏",Toast.LENGTH_SHORT).show();
-//                    intent1 = new Intent(GetContext.getContext(), Trade.class);
-//                    startActivity(intent1);
+                    intent1 = new Intent(GetContext.getContext(), HistoryGoods.class);
+                    intent1.putExtra("id", user.getId());
+                    startActivity(intent1);
                     break;
                 case R.id.nav_carpool:
-                    Toast.makeText(GetContext.getContext(),"修改左边导航栏",Toast.LENGTH_SHORT).show();
-//                    intent1 = new Intent(GetContext.getContext(), CarPool.class);
-//                    startActivity(intent1);
+                    intent1 = new Intent(GetContext.getContext(), HistoryCarPool.class);
+                    intent1.putExtra("user_id", user.getUser_ID());
+                    startActivity(intent1);
                     break;
                 case R.id.nav_info:
-                    Toast.makeText(GetContext.getContext(),"修改左边导航栏",Toast.LENGTH_SHORT).show();
-//                    intent1 = new Intent(GetContext.getContext(), Info.class);
-//                    startActivity(intent1);
+                    intent1 = new Intent(GetContext.getContext(), Info.class);
+                    intent1.putExtra("user_info", user);
+                    startActivityForResult(intent1, 1);
                     break;
             }
             return true;
@@ -102,10 +102,8 @@ public class Home extends BaseActivity implements View.OnClickListener {
     private CircleImageView headerimage;
     private View headerLayout;
 //两个布尔值，分别代表点击标题后，是否可以刷新
-    private Boolean tradeCanFresh ;
-    private Boolean carCanFresh ;
-    private Fragment tradeFragment;
-    private Fragment carpoolFragment;
+private Boolean tradeCanFresh, carCanFresh;
+    private Fragment tradeFragment, carpoolFragment;
     private FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +151,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 toolbar_carpool.setTextColor(getResources().getColor(R.color.black0));
                 if (tradeCanFresh) {
                     TradeFragment tradeFragment = (TradeFragment) getSupportFragmentManager().findFragmentByTag("fragment1");
+
                     tradeFragment.refresh();
                 }else {
 
@@ -163,9 +162,9 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 toolbar_trade.setTextColor(getResources().getColor(R.color.black0));
                 toolbar_carpool.setTextColor(getResources().getColor(R.color.colorAccent));
                 if (carCanFresh) {
-                    Toast.makeText(this,"刷新",Toast.LENGTH_SHORT).show();
+                    CarPoolFragment carPoolFragment = (CarPoolFragment) getSupportFragmentManager().findFragmentByTag("fragment2");
+                    carPoolFragment.refresh();
                 }else {
-
                     showFragment(2);
                 }
                 break;
@@ -181,6 +180,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
         hideFragment(transaction);
         switch (index){
             case 1:
+
                 if(tradeFragment == null){
                     tradeFragment = new TradeFragment();
                     transaction.add(R.id.replace,tradeFragment,"fragment1");
@@ -191,10 +191,12 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 carCanFresh = false;
                 break;
             case 2:
+//                hideFragment(transaction);
                 if(carpoolFragment == null){
                     carpoolFragment = new CarPoolFragment();
                     transaction.add(R.id.replace,carpoolFragment,"fragment2");
                 }else {
+
                     transaction.show(carpoolFragment);
                 }
                 carCanFresh = true;

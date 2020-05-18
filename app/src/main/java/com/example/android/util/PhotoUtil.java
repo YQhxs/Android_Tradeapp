@@ -91,9 +91,19 @@ public class PhotoUtil {
     }
 
     public static void openAlbum(Activity activity, int requestCode) {
-        Intent intent = new Intent("android.intent.action.GET_CONTENT");
-        intent.setType("image/*");
-        activity.startActivityForResult(intent, requestCode);
+//        Intent intent = new Intent(Intent.ACTION_PICK, null);
+//        intent.setType("image/*");
+//        activity.startActivityForResult(intent, requestCode);
+        Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
+        /**
+         * 下面这句话，与其它方式写是一样的效果，如果：
+         * intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+         * intent.setType(""image/*");设置数据类型
+         * 要限制上传到服务器的图片类型时可以直接写如："image/jpeg 、 image/png等的类型"
+         */
+        albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        activity.startActivityForResult(albumIntent, requestCode);
+
     }
 
 }

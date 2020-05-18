@@ -8,4 +8,5 @@
     <color name="gray3">#3333</color>
     <color name="gray9">#9999</color>
     <color name="black0">#000000</color>
+    <color name="background">#F2F2F2</color>
 </resources>

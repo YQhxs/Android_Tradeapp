@@ -17,4 +17,7 @@
         <attr name="isVisible" format="boolean"></attr>
         <attr name="isClickable" format="boolean"></attr>
     </declare-styleable>
+    <declare-styleable name="MyTextView">
+        <attr name="infoId" format="integer"></attr>
+    </declare-styleable>
 </resources>

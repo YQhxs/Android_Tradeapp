@@ -391,17 +391,19 @@ public class Info extends BaseActivity implements View.OnClickListener {
             case 1:
                 if (resultCode == RESULT_OK) {
                     image_uri = data.getData();
-                    LogUtil.e("----从相册返回的图片uri", "" + image_uri);
-                    Glide.with(this).load(image_uri).apply(options).into(image_linearViewById);
+                    LogUtil.e("----Info从相册返回的图片uri", "" + image_uri);
+                    String realurl = FileUtils.getFilePathByUri(GetContext.getContext(), image_uri);
+                    LogUtil.e("----Info从uri获取真实路径", "" + realurl);
+                    Glide.with(this).load(realurl).apply(options).into(image_linearViewById);
 
 //                    压缩图片并返回所在路径，然后再上传服务器
-                    uploadfile(ImageCompress.getimage(FileUtils.getFilePathByUri(GetContext.getContext(), image_uri)));
+                    uploadfile(ImageCompress.getimage(realurl));
                 }
                 break;
             case 2:
                 if (resultCode == RESULT_OK) {
 //                    LogUtil.e("----从相机拍摄返回的图片路径", "" + mfile.getAbsolutePath());
-                    LogUtil.e("----从相机拍摄返回的图片路径", "" + photopath);
+                    LogUtil.e("----Info从相机拍摄返回的图片路径", "" + photopath);
                     Glide.with(this).load(photopath).apply(options).into(image_linearViewById);
 
                     uploadfile(ImageCompress.getimage(photopath));
@@ -542,4 +544,13 @@ public class Info extends BaseActivity implements View.OnClickListener {
         });
 
     }
+//    E/----Info从相册返回的图片uri: content://com.miui.gallery.open/raw/
+//    E/BitmapFactory: Unable to decode stream: java.lang.NullPointerException
+//    RuntimeException: Failure delivering result
+//    ResultInfo{who=null, request=1, result=-1,
+//    data=Intent { dat=content://com.miui.gallery.open/raw//storage/emulated/0/miui/gallery/cloud/owner/负一屏/233033j4i5m4g915acjcag10-05-26-.jpg typ=image/jpeg flg=0x1 }}
+//    to activity {com.example.android/com.example.android.Info}: java.lang.NullPointerException: Attempt to
+//    invoke virtual method
+//    'boolean android.graphics.Bitmap.compress
+//    (android.graphics.Bitmap$CompressFormat, int, java.io.OutputStream)' on a null object reference
 }

@@ -11,14 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.android.R;
 import com.example.android.gson.TradeGoods;
 import com.example.android.gson.Tradeinfo;
-import com.example.android.util.GoodsAdapter;
+import com.example.android.util.HttpUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,7 +29,6 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -54,7 +52,7 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+//        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
         swipeRefreshLayout.setOnRefreshListener(this);
 
         scrollView = view.findViewById(R.id.scroll_View);
@@ -68,8 +66,7 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
                 .post(requestBody)
                 .url("http://39.97.173.40:8999/transaction/getall")
                 .build();
-        OkHttpClient client = new OkHttpClient();
-        client.newCall(request).enqueue(new okhttp3.Callback() {
+        HttpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
