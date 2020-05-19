@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.android.R;
 import com.example.android.gson.TradeGoods;
+import com.example.android.util.LogUtil;
 
 import java.util.List;
 
@@ -22,38 +22,56 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> {
     private Context mcontext;
     private List<TradeGoods> mgoodsList;
+//    private OnItemClickLitener mOnItemClickLitener = null;
+//    public interface OnItemClickLitener{
+//        void onItemClick(View view, int position,int id);
+//    }
+//    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener)
+//    {
+//        this.mOnItemClickLitener = mOnItemClickLitener;
+//    }
 
     public GoodsAdapter(List<TradeGoods> goodsList) {
         mgoodsList = goodsList;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GoodsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final GoodsAdapter.ViewHolder holder, final int position) {
+//        if(mOnItemClickLitener!=null){
+//            holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+////                    int pos = position;
+//                    mOnItemClickLitener.onItemClick(v,position,holder.goods_title.getId());
+//                }
+//            });
+//        }
         TradeGoods good = mgoodsList.get(position);
-        holder.goods_title.setId(good.getId());
+//        holder.itemView.setId(good.getId());
+        holder.itemView.setId(good.getId());
+        LogUtil.e("TradeFragment的适配器", holder.itemView.getId() + "");
+//        原来是设置在TextView上了，结果id并不好取，进入另一个活动太麻烦。
+//        holder.goods_title.setId(good.getId());
         holder.goods_title.setText(good.getTitle());
         holder.solder_nickname.setText(good.getNick_NAME());
 //        后期改动需要把TradeGoods里面的url改成string类型，把请求回来的数据放入goodlist；
-        Glide.with(mcontext).load(R.drawable.touxiang).into(holder.goods_img);
-        Glide.with(mcontext).load(R.drawable.touxiang).into(holder.solder_head);
-//        Glide.with(mcontext).load(good.getImg_url()).into(holder.goods_img);
-//        Glide.with(mcontext).load(good.getSolder_head()).into(holder.solder_head);
+//        Glide.with(mcontext).load(R.drawable.touxiang).into(holder.goods_img);
+//        Glide.with(mcontext).load(R.drawable.touxiang).into(holder.solder_head);
+        Glide.with(mcontext).load("http://39.97.173.40:8999/file/" + good.getPhotos().split("\\*\\*")[0]).into(holder.goods_img);
+        if (!"未设置".equals(good.getPhoto())) {
+            Glide.with(mcontext).load("http://39.97.173.40:8999/file/" + good.getPhoto()).into(holder.solder_head);
+        }
 
     }
 
     @Override
-    public GoodsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GoodsAdapter.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         if (mcontext == null) {
             mcontext = parent.getContext();
         }
         View view = LayoutInflater.from(mcontext).inflate(R.layout.goods_item_layout, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mcontext, "交易信息id为" + holder.goods_title.getId(), Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return holder;
 
     }

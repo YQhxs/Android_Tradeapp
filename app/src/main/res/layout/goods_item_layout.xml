@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/touxiang"></ImageView>
+            android:src="@drawable/touxiang" />
 
-        <com.example.android.widget.MyTextView
+        <TextView
             android:id="@+id/goods_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,12 +30,12 @@
             android:singleLine="true"
             android:textColor="@color/black0"
             android:textSize="16sp"
-            tools:text="这是标题"></com.example.android.widget.MyTextView>
+            tools:text="这是标题" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray3"></View>
+            android:background="@color/gray3" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
-                android:src="@drawable/touxiang"></de.hdodenhof.circleimageview.CircleImageView>
+                android:src="@drawable/touxiang" />
 
             <TextView
                 android:id="@+id/solder_name"
@@ -58,7 +58,7 @@
                 android:singleLine="true"
                 android:textColor="@color/black0"
                 android:textSize="16sp"
-                tools:text="昵称"></TextView>
+                tools:text="昵称" />
         </LinearLayout>
     </LinearLayout>
 

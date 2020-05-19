@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Info">
+    tools:context=".changeinfo.Info">
 
     <com.example.android.widget.InfoTitle
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="5dp"
             android:text="头像"
-            android:textColor="@color/black0"></TextView>
+            android:textColor="@color/black0" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/info_image"
@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="280dp"
             android:clickable="true"
-            android:src="@drawable/touxiang"></de.hdodenhof.circleimageview.CircleImageView>
+            android:src="@drawable/touxiang" />
 
         <ImageView
             android:id="@+id/jt_right_iv"
@@ -55,7 +55,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         app:jt_visible="false"
-        app:title="ID"></com.example.android.widget.InfoItem>
+        app:title="ID" />
 
     <com.example.android.widget.InfoItem
         android:id="@+id/edit_name"
@@ -65,7 +65,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         app:edt_hint_content="请输入姓名"
-        app:title="昵称"></com.example.android.widget.InfoItem>
+        app:title="昵称" />
 
     <com.example.android.widget.InfoItem
         android:id="@+id/edit_sex"
@@ -75,7 +75,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         app:edt_hint_content="请选择性别"
-        app:title="性别"></com.example.android.widget.InfoItem>
+        app:title="性别" />
 
     <com.example.android.widget.InfoItem
         android:id="@+id/edit_introduction"
@@ -85,5 +85,5 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         app:edt_hint_content="介绍一下自己吧！"
-        app:title="介绍"></com.example.android.widget.InfoItem>
+        app:title="介绍" />
 </LinearLayout>

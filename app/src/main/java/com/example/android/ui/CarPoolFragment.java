@@ -80,7 +80,7 @@ public class CarPoolFragment extends Fragment {
         Request request = new Request
                 .Builder()
                 .post(body)
-                .url(url1)
+                .url("http://39.97.173.40:8999/carpool/getall")
                 .build();
         HttpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
             @Override

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Info">
+    tools:context=".changeinfo.Info">
 
     <com.example.android.widget.InfoTitle
         android:id="@+id/change_name"
@@ -20,7 +20,7 @@
         android:id="@+id/change_name_content"
         android:layout_width="match_parent"
         android:imeOptions="actionDone"
-
+        android:inputType="text"
         android:layout_height="50dp"
         android:singleLine="true"
         android:ellipsize="end"

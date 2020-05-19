@@ -23,11 +23,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.android.changeinfo.Info;
 import com.example.android.gson.User;
 import com.example.android.ui.CarPoolFragment;
 import com.example.android.ui.TradeFragment;
 import com.example.android.ui.history.HistoryCarPool;
 import com.example.android.ui.history.HistoryGoods;
+import com.example.android.ui.publish.PublishCar;
+import com.example.android.ui.publish.PublishGoods;
 import com.example.android.util.ActivityCollector;
 import com.example.android.util.BaseActivity;
 import com.example.android.util.GetContext;

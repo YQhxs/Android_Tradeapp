@@ -1,5 +1,6 @@
 package com.example.android.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +18,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.android.R;
 import com.example.android.gson.TradeGoods;
 import com.example.android.gson.Tradeinfo;
+import com.example.android.ui.details.DetailsGoods;
 import com.example.android.util.HttpUtil;
+import com.example.android.util.LogUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -39,18 +42,28 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
     private GoodsAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private NestedScrollView scrollView;
+    private RecyclerView recyclerView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trade,container,false);
         initData();
         Log.e("执行init方法后，函数体外数据有没有，",mlist.toString());
-        RecyclerView recyclerView = view.findViewById(R.id.recycle_view);
+        recyclerView = view.findViewById(R.id.recycle_view);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
-
         adapter= new GoodsAdapter(mlist);
+//        适用控件较少情况
+//        adapter.setOnItemClickLitener(new GoodsAdapter.OnItemClickLitener() {
+//            @Override
+//            public void onItemClick(View view, int position, int id) {
+//                Intent intent = new Intent(getActivity(), DetailsGoods.class);
+//                intent.putExtra("id",id);
+//                LogUtil.e("点击的id",id+"");
+//                startActivity(intent);
+//            }
+//
+//        });
         recyclerView.setAdapter(adapter);
-
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
 //        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -112,5 +125,26 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
         scrollView.scrollTo(0,0);
         swipeRefreshLayout.setRefreshing(true);
         refreshTradeGoods();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        recyclerView.addOnItemTouchListener(new OnItemTouchListener(recyclerView) {
+            @Override
+            public void onItemClick(RecyclerView.ViewHolder vh) {
+                Intent intent = new Intent(getActivity(), DetailsGoods.class);
+                LogUtil.e("TradeFragment里面", vh.toString());
+                LogUtil.e("TradeFragment里面", vh.itemView.getId() + "");
+                intent.putExtra("id", vh.itemView.getId());
+//                return;
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemLongClick(RecyclerView.ViewHolder vh) {
+//               Toast.makeText(getContext(),"长按删除，还需做个清空", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

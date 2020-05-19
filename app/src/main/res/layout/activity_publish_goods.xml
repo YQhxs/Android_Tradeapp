@@ -5,25 +5,25 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PublishCar">
+    tools:context=".ui.publish.PublishCar">
 
     <com.example.android.widget.InfoTitle
         android:id="@+id/publish_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:bartitle="发布交易信息"></com.example.android.widget.InfoTitle>
+        app:bartitle="发布交易信息" />
 
     <EditText
         android:id="@+id/publish_goods_title"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:inputType="text"
-        tools:text="这是标题"></EditText>
+        android:inputType="textMultiLine"
+        tools:text="这是标题" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nine_grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:text="价格:"></TextView>
+            android:text="价格:" />
 
         <EditText
             android:id="@+id/publish_goods_price"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="number"
-            android:text="0.00"></EditText>
+            android:hint="0.00" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,13 +50,13 @@
         <TextView
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:text="分类"></TextView>
+            android:text="分类" />
 
         <Spinner
             android:id="@+id/category_spinner"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:entries="@array/allCategory"></Spinner>
+            android:entries="@array/allCategory" />
     </LinearLayout>
 </LinearLayout>

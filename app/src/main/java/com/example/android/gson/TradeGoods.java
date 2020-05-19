@@ -87,6 +87,22 @@ public class TradeGoods implements Serializable {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return "TradeGoods{" +
+                "id=" + id +
+                ", nick_NAME='" + nick_NAME + '\'' +
+                ", sex='" + sex + '\'' +
+                ", photo='" + photo + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", user_ID='" + user_ID + '\'' +
+                ", photos='" + photos + '\'' +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", price='" + price + '\'' +
+                '}';
+    }
+
     public void setPrice(String price) {
         this.price = price;
     }

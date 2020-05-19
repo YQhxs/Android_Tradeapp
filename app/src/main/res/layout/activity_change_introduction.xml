@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Info">
+    tools:context=".changeinfo.Info">
 
     <com.example.android.widget.InfoTitle
         android:id="@+id/change_introduction"
@@ -23,6 +23,7 @@
         android:imeOptions="actionDone"
         android:minHeight="100dp"
         android:padding="10dp"
+        android:inputType="textMultiLine"
         android:background="@color/gray3"
         android:hint="介绍一下自己吧"
         android:textColorHint="@color/gray9">

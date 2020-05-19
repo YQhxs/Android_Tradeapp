@@ -1,7 +1,5 @@
 package com.example.android.changeinfo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -11,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android.R;
 import com.example.android.gson.User;
@@ -89,6 +89,7 @@ public class ChangeIntroduction extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
     private void updatechange(){
         Gson gson = new Gson();
         String param = gson.toJson(user);
@@ -105,10 +106,15 @@ public class ChangeIntroduction extends AppCompatActivity implements View.OnClic
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) {
 
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
