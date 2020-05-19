@@ -14,9 +14,11 @@
         app:bartitle="发布交易信息"></com.example.android.widget.InfoTitle>
 
     <EditText
+        android:id="@+id/publish_goods_title"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        tools:text="测试文字"></EditText>
+        android:inputType="text"
+        tools:text="这是标题"></EditText>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nine_grid"
@@ -33,11 +35,12 @@
             android:text="价格:"></TextView>
 
         <EditText
-            android:id="@+id/carpool_price"
+            android:id="@+id/publish_goods_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="0.00"></EditText>
+            android:inputType="number"
+            android:text="0.00"></EditText>
     </LinearLayout>
 
     <LinearLayout

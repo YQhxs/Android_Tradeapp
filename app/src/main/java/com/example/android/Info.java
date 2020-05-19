@@ -38,6 +38,7 @@ import com.example.android.util.HttpUtil;
 import com.example.android.util.ImageCompress;
 import com.example.android.util.LogUtil;
 import com.example.android.util.PhotoUtil;
+import com.example.android.util.UriUtils;
 import com.example.android.widget.InfoItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -387,12 +388,12 @@ public class Info extends BaseActivity implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         Uri image_uri;
         switch (requestCode) {
-//              1表示相册2表示相机 3表示更改昵称的活动，4表示更改介绍的活动
+//              1表示相册2表示相机 3表示更改昵称的活动，4表示更改介绍的活动5裁剪照片，还未实现
             case 1:
                 if (resultCode == RESULT_OK) {
                     image_uri = data.getData();
                     LogUtil.e("----Info从相册返回的图片uri", "" + image_uri);
-                    String realurl = FileUtils.getFilePathByUri(GetContext.getContext(), image_uri);
+                    String realurl = FileUtils.getFilePathByUri(GetContext.getContext(), UriUtils.getFileUri(GetContext.getContext(), image_uri));
                     LogUtil.e("----Info从uri获取真实路径", "" + realurl);
                     Glide.with(this).load(realurl).apply(options).into(image_linearViewById);
 
@@ -510,12 +511,11 @@ public class Info extends BaseActivity implements View.OnClickListener {
                 Images images;
                 images = gson.fromJson(responsedata, new TypeToken<Images>() {
                 }.getType());
-                final String path = images.getIamgespath().get(0);
+                final String path = images.getimagespath().get(0);
                 LogUtil.e("----上传文件后返回的图片数组，这里只有一个头像", ":" + path);
                 user.setPhoto(path);
                 updateimage();
                 ischanged = true;
-
             }
         });
 
@@ -544,13 +544,5 @@ public class Info extends BaseActivity implements View.OnClickListener {
         });
 
     }
-//    E/----Info从相册返回的图片uri: content://com.miui.gallery.open/raw/
-//    E/BitmapFactory: Unable to decode stream: java.lang.NullPointerException
-//    RuntimeException: Failure delivering result
-//    ResultInfo{who=null, request=1, result=-1,
-//    data=Intent { dat=content://com.miui.gallery.open/raw//storage/emulated/0/miui/gallery/cloud/owner/负一屏/233033j4i5m4g915acjcag10-05-26-.jpg typ=image/jpeg flg=0x1 }}
-//    to activity {com.example.android/com.example.android.Info}: java.lang.NullPointerException: Attempt to
-//    invoke virtual method
-//    'boolean android.graphics.Bitmap.compress
-//    (android.graphics.Bitmap$CompressFormat, int, java.io.OutputStream)' on a null object reference
+
 }

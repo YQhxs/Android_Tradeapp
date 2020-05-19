@@ -12,6 +12,10 @@ public class TradeGoods implements Serializable {
     private String user_ID;
     private String photos;
     private String title;
+
+    public TradeGoods() {
+    }
+
     private String category;
     private String price;
 
@@ -45,6 +49,46 @@ public class TradeGoods implements Serializable {
 
     public String getPhotos() {
         return photos;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNick_NAME(String nick_NAME) {
+        this.nick_NAME = nick_NAME;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public void setUser_ID(String user_ID) {
+        this.user_ID = user_ID;
+    }
+
+    public void setPhotos(String photos) {
+        this.photos = photos;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getCategory() {

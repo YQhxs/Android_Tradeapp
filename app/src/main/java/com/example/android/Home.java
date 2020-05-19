@@ -151,7 +151,6 @@ private Boolean tradeCanFresh, carCanFresh;
                 toolbar_carpool.setTextColor(getResources().getColor(R.color.black0));
                 if (tradeCanFresh) {
                     TradeFragment tradeFragment = (TradeFragment) getSupportFragmentManager().findFragmentByTag("fragment1");
-
                     tradeFragment.refresh();
                 }else {
 
@@ -229,12 +228,14 @@ private Boolean tradeCanFresh, carCanFresh;
                 break;
             case R.id.publish_goods:
                 intent = new Intent(GetContext.getContext(), PublishGoods.class);
+                intent.putExtra("user_id", user.getUser_ID());
                 startActivity(intent);
                 //跳转到发布商品页面；
                 break;
             case R.id.publish_carpool:
 //                调转到发布拼车信息页面；
                 intent = new Intent(GetContext.getContext(), PublishCar.class);
+                intent.putExtra("user_id", user.getUser_ID());
                 startActivity(intent);
                 break;
         }
