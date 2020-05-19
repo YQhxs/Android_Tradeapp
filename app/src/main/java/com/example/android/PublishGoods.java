@@ -143,12 +143,14 @@ public class PublishGoods extends BaseActivity {
 //                uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, null, null));
 //                LogUtil.e(TAG,""+uri);
 //                LogUtil.e(TAG, String.valueOf(uri));
-                image_uri = data.getData();
-                LogUtil.e(TAG, "在九宫格PublishGood是" + image_uri);
-                String realurl = FileUtils.getFilePathByUri(GetContext.getContext(), UriUtils.getFileUri(GetContext.getContext(), image_uri));
-                LogUtil.e("----PublishGood从uri获取真实路径", "" + realurl);
-                mSDImageList.add(realurl);
-                mNineGridAdapter.notifyDataSetChanged();
+                if (resultCode == RESULT_OK) {
+                    image_uri = data.getData();
+                    LogUtil.e(TAG, "在九宫格PublishGood是" + image_uri);
+                    String realurl = FileUtils.getFilePathByUri(GetContext.getContext(), UriUtils.getFileUri(GetContext.getContext(), image_uri));
+                    LogUtil.e("----PublishGood从uri获取真实路径", "" + realurl);
+                    mSDImageList.add(realurl);
+                    mNineGridAdapter.notifyDataSetChanged();
+                }
                 break;
         }
     }
@@ -212,7 +214,8 @@ public class PublishGoods extends BaseActivity {
             compressPhotos.add(ImageCompress.getimage(inputphoto));
         }
         LogUtil.e(TAG, "压缩后的路径" + compressPhotos.toString());
-
+        mlist = compressPhotos;
+        LogUtil.e(TAG, "直接赋值看mlist内容" + mlist.toString());
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
 
         for (String photo :
