@@ -87,7 +87,6 @@ public class PublishGoods extends BaseActivity {
                     uploadalldata();
                     Toast.makeText(GetContext.getContext(), "发布成功", Toast.LENGTH_SHORT).show();
                     finish();
-
                 }
                 Toast.makeText(GetContext.getContext(), "内容为空，不发布", Toast.LENGTH_SHORT).show();
 
