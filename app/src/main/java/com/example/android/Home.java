@@ -84,12 +84,12 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 case R.id.nav_goods:
                     intent1 = new Intent(GetContext.getContext(), HistoryGoods.class);
                     intent1.putExtra("id", user.getId());
-                    startActivity(intent1);
+                    startActivityForResult(intent1, 3);
                     break;
                 case R.id.nav_carpool:
                     intent1 = new Intent(GetContext.getContext(), HistoryCarPool.class);
                     intent1.putExtra("user_id", user.getUser_ID());
-                    startActivity(intent1);
+                    startActivityForResult(intent1, 2);
                     break;
                 case R.id.nav_info:
                     intent1 = new Intent(GetContext.getContext(), Info.class);
@@ -156,7 +156,6 @@ private Boolean tradeCanFresh, carCanFresh;
                     TradeFragment tradeFragment = (TradeFragment) getSupportFragmentManager().findFragmentByTag("fragment1");
                     tradeFragment.refresh();
                 }else {
-
                     showFragment(1);
                 }
                 break;
@@ -232,14 +231,14 @@ private Boolean tradeCanFresh, carCanFresh;
             case R.id.publish_goods:
                 intent = new Intent(GetContext.getContext(), PublishGoods.class);
                 intent.putExtra("user_id", user.getUser_ID());
-                startActivity(intent);
+                startActivityForResult(intent, 3);
                 //跳转到发布商品页面；
                 break;
             case R.id.publish_carpool:
 //                调转到发布拼车信息页面；
                 intent = new Intent(GetContext.getContext(), PublishCar.class);
                 intent.putExtra("user_id", user.getUser_ID());
-                startActivity(intent);
+                startActivityForResult(intent, 2);
                 break;
         }
         return true;
@@ -268,43 +267,65 @@ private Boolean tradeCanFresh, carCanFresh;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        LogUtil.e("---", "Home接收Info传回来的状态码，状态码表示Info信息是否改变" + resultCode);
-        if (resultCode == RESULT_OK) {
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("user_id", user.getUser_ID());
-                jsonObject.put("password", user.getPassword());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String param = jsonObject.toString();
+//        2,3表示拼车历史与发布，交易历史预发布
+        LogUtil.e("---", "Home接收Info传回来的状态码" + requestCode + "--" + resultCode + data.getBooleanExtra("ischanged", false));
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("user_id", user.getUser_ID());
+                        jsonObject.put("password", user.getPassword());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    String param = jsonObject.toString();
 
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), param);
-            Request request = new Request.Builder()
-                    .url("http://39.97.173.40:8999/login")
-                    .post(requestBody)
-                    .build();
-            HttpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
-                @Override
-                public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
-                }
-
-                @Override
-                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                    final String resposedata = response.body().string();
-                    LogUtil.e("-----Trade在Info信息改变后重新请求user对象", resposedata);
-
-                    runOnUiThread(new Runnable() {
+                    RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), param);
+                    Request request = new Request.Builder()
+                            .url("http://39.97.173.40:8999/login")
+                            .post(requestBody)
+                            .build();
+                    HttpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
                         @Override
-                        public void run() {
-                            Gson gson = new Gson();
-                            user = gson.fromJson(resposedata, User.class);
-                            showInfo(user);
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            final String resposedata = response.body().string();
+                            LogUtil.e("-----Trade在Info信息改变后重新请求user对象", resposedata);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Gson gson = new Gson();
+                                    user = gson.fromJson(resposedata, User.class);
+                                    showInfo(user);
+                                }
+                            });
                         }
                     });
                 }
-            });
+                break;
+            case 2:
+                if (resultCode == RESULT_OK && data.getBooleanExtra("ischanged", false)) {
+                    CarPoolFragment carPoolFragment = (CarPoolFragment) getSupportFragmentManager().findFragmentByTag("fragment2");
+                    if (carPoolFragment != null) {
+                        LogUtil.e("为为什么未刷新", "2");
+                        carPoolFragment.refresh();
+                    }
+                }
+                break;
+            case 3:
+                if (resultCode == RESULT_OK && data.getBooleanExtra("ischanged", false)) {
+                    TradeFragment tradeFragment = (TradeFragment) getSupportFragmentManager().findFragmentByTag("fragment1");
+                    LogUtil.e("为为什么未刷新", "3");
+                    tradeFragment.refresh();
+
+                }
+                break;
         }
     }
 

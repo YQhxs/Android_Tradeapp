@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -73,10 +73,9 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
     }
 
     private void initData(){
-        RequestBody requestBody = new FormBody.Builder().build();
+        RequestBody body = RequestBody.Companion.create("", MediaType.Companion.parse("text/plain"));
         Request request = new Request.Builder()
-                .addHeader("Content-Type", "application/json")
-                .post(requestBody)
+                .post(body)
                 .url("http://39.97.173.40:8999/transaction/getall")
                 .build();
         HttpUtil.sendOkHttpRequest(request, new okhttp3.Callback() {
@@ -90,9 +89,10 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
                 String responsedata = response.body().string();
                 Gson gson = new Gson();
                 Tradeinfo tradeinfo = gson.fromJson(responsedata,new TypeToken<Tradeinfo>(){}.getType());
+                mlist.clear();
                 mlist.addAll(tradeinfo.getTradeInfo());
 //                mlist = tradeinfo.getTradeInfo();赋值认为数据无变化
-                Log.e("在碎片中请求数据回来，",mlist.toString());
+                Log.e("在碎片中请求数据回来，再来测试刷新", mlist.toString());
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -110,7 +110,7 @@ public class TradeFragment extends Fragment  implements SwipeRefreshLayout.OnRef
     }
 
     private void refreshTradeGoods() {
-                initData();
+        initData();
 //     因为是活动，所以刷新时活动未重新创建所以init方法，是往里面加数据
 //        adapter.notifyDataSetChanged();
         if (swipeRefreshLayout.isRefreshing()) {

@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/activity_trade">
-    <group android:checkableBehavior="single">
-
+    tools:showIn="@layout/activity_home">
+    <group android:checkableBehavior="none">
         <item
             android:id="@+id/nav_goods"
             android:icon="@drawable/trade"
-            android:title="交易"></item>
-
+            android:title="交易历史"></item>
         <item
             android:id="@+id/nav_carpool"
             android:icon="@drawable/carpool"
-            android:title="拼车"></item>
-
+            android:title="拼车历史"></item>
         <item
             android:id="@+id/nav_info"
             android:icon="@drawable/info"

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.android.R;
 import com.example.android.gson.TradeGoods;
-import com.example.android.util.LogUtil;
 
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
         TradeGoods good = mgoodsList.get(position);
 //        holder.itemView.setId(good.getId());
         holder.itemView.setId(good.getId());
-        LogUtil.e("TradeFragment的适配器", holder.itemView.getId() + "");
+//        LogUtil.e("TradeFragment的适配器", holder.itemView.getId() + "");
 //        原来是设置在TextView上了，结果id并不好取，进入另一个活动太麻烦。
 //        holder.goods_title.setId(good.getId());
         holder.goods_title.setText(good.getTitle());

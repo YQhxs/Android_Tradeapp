@@ -27,9 +27,13 @@
         <activity android:name=".ui.publish.PublishGoods" />
         <activity android:name=".ui.publish.PublishCar" />
         <activity android:name=".changeinfo.Info" />
-        <activity android:name=".Home" />
+        <activity
+            android:name=".Home"
+            android:launchMode="singleTask" />
         <activity android:name=".LogOn" />
-        <activity android:name=".LogIn">
+        <activity
+            android:name=".LogIn"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,5 +1,6 @@
 package com.example.android.ui.publish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,10 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.android.R;
 import com.example.android.gson.PublishCarPool;
+import com.example.android.util.BaseActivity;
 import com.example.android.util.GetContext;
 import com.example.android.util.HttpUtil;
 import com.example.android.util.LogUtil;
@@ -26,13 +26,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class PublishCar extends AppCompatActivity {
+public class PublishCar extends BaseActivity {
     private static final String TAG = "PublishGoods";
     private EditText editText;
     private ImageView imageView;
     private Button button;
     private String userid;
-
+    private boolean ischanged = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,9 @@ public class PublishCar extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("ischanged", ischanged);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -79,9 +82,22 @@ public class PublishCar extends AppCompatActivity {
 
                     }
                 });
+//                要放在异步处理之后
                 Toast.makeText(GetContext.getContext(), "发布成功", Toast.LENGTH_SHORT).show();
+                ischanged = true;
+                Intent intent = new Intent();
+                intent.putExtra("ischanged", ischanged);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("ischanged", ischanged);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

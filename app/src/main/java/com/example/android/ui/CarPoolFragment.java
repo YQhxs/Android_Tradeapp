@@ -94,9 +94,11 @@ public class CarPoolFragment extends Fragment {
                 Gson gson = new Gson();
                 CarPoolInfo carPoolInfo = gson.fromJson(responsedata, new TypeToken<CarPoolInfo>() {
                 }.getType());
+//                前期数据少先这样请求全体吧
+                mlist.clear();
                 mlist.addAll(carPoolInfo.getCarPools());
-
                 Log.e(TAG, "在CarPool碎片中请求数据回来，" + mlist.toString());
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

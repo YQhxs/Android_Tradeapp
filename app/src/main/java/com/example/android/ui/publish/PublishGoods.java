@@ -60,6 +60,7 @@ public class PublishGoods extends BaseActivity {
     private String photosname, userid, category = "日用品";
     private PublishGood publishGood = new PublishGood();
     private Handler handler;
+    private boolean ischanged = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +77,9 @@ public class PublishGoods extends BaseActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("ischanged", ischanged);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -85,11 +89,9 @@ public class PublishGoods extends BaseActivity {
             public void onClick(View v) {
                 if (!"".equals(editText.getText().toString()) && mSDImageList.size() > 0) {
                     uploadalldata();
-                    Toast.makeText(GetContext.getContext(), "发布成功", Toast.LENGTH_SHORT).show();
-                    finish();
+                    return;
                 }
                 Toast.makeText(GetContext.getContext(), "内容为空，不发布", Toast.LENGTH_SHORT).show();
-
             }
         });
         mRcyvImage = findViewById(R.id.nine_grid);
@@ -121,6 +123,14 @@ public class PublishGoods extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("ischanged", ischanged);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     private void showImageDialog() {
@@ -193,7 +203,12 @@ public class PublishGoods extends BaseActivity {
 
                     }
                 });
-
+                ischanged = true;
+                Toast.makeText(GetContext.getContext(), "发布成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra("ischanged", ischanged);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         };
 
