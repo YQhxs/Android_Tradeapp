@@ -6,7 +6,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="HistoryCarPoo" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -17,24 +16,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/LogOn.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/LogOn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/touxiang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,125 +72,41 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/publish/PublishGoods.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/details/DetailsGoods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="173" selection-start-line="173" selection-end-line="173" />
+            <state relative-caret-position="162">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
               <folding>
-                <element signature="method#onBackPressed#0;class#PublishGoods#0" />
-                <element signature="method#showImageDialog#0;class#PublishGoods#0" />
-                <element signature="method#showDeletePop#0;class#PublishGoods#0" />
-                <element signature="method#onActivityResult#0;class#PublishGoods#0" />
+                <element signature="e#1988#2130#0" expanded="true" />
+                <element signature="e#2129#2130#0" expanded="true" />
+                <element signature="e#2548#2549#0" expanded="true" />
+                <element signature="e#2592#2593#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryCarPool.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details_goods.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="70" column="35" lean-forward="true" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
+            <state relative-caret-position="110">
+              <caret line="62" column="47" lean-forward="true" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#3133:3436" />
-                <element signature="class#3529:4150" />
-                <element signature="e#4304#4469#0" expanded="true" />
-                <element signature="e#4468#4469#0" expanded="true" />
-                <element signature="method#onClick#0;class#HistoryCarPool#0" />
-                <element signature="method#edit#0;class#HistoryCarPool#0" />
-                <element signature="method#clickSelectAll#0;class#HistoryCarPool#0" />
-                <element signature="method#del#0;class#HistoryCarPool#0" />
-                <element signature="e#8179#8361#0" expanded="true" />
-                <element signature="e#8360#8361#0" expanded="true" />
-                <element signature="method#refreshTradeGoods#0;class#HistoryCarPool#0" />
-                <element signature="method#delerecordfromserver#0;class#HistoryCarPool#0" />
+                <element signature="e#2897#2917#0" expanded="true" />
               </folding>
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_trade.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="79" column="34" lean-forward="true" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+            <state relative-caret-position="220">
+              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/LogIn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="138" column="54" lean-forward="true" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/LogOn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1079">
-              <caret line="120" column="138" selection-start-line="120" selection-start-column="138" selection-end-line="120" selection-end-column="138" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/Home.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="279" column="44" lean-forward="true" selection-start-line="279" selection-start-column="44" selection-end-line="279" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#onCreate#0;class#Home#0" />
-                <element signature="method#onClick#0;class#Home#0" />
-                <element signature="method#showFragment#0;class#Home#0" />
-                <element signature="method#hideFragment#0;class#Home#0" />
-                <element signature="method#onCreateOptionsMenu#0;class#Home#0" />
-                <element signature="method#onOptionsItemSelected#0;class#Home#0" />
-                <element signature="method#showInfo#0;class#Home#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1606">
-              <caret line="126" column="33" selection-start-line="126" selection-start-column="33" selection-end-line="126" selection-end-column="33" />
-              <folding>
-                <element signature="method#onRequestPermissionsResult#0;class#Info#0" />
-                <element signature="method#changeSex#0;class#Info#0" />
-                <element signature="method#updatechange#0;class#Info#0" />
-                <element signature="e#14666#16530#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/CarPoolAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -222,10 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>change</find>
-      <find>big</find>
-      <find>ImageAdapter</find>
-      <find>history</find>
       <find>edit_image</find>
       <find>show</find>
       <find>fragment1</find>
@@ -252,6 +149,10 @@
       <find>onba</find>
       <find>setresult</find>
       <find>mlist</find>
+      <find>publishGood</find>
+      <find>PublishGood从uri获取真</find>
+      <find>-----景区了么</find>
+      <find>景区了么</find>
     </findStrings>
     <replaceStrings>
       <replace>InfoItem</replace>
@@ -270,6 +171,7 @@
       <replace>mlist</replace>
       <replace>rbSelectAll</replace>
       <replace>HistoryGoods</replace>
+      <replace>goodsObject</replace>
     </replaceStrings>
     <dirStrings>
       <dir>F:\TestDemo\app\src\main\java\com\example\android\widget</dir>
@@ -287,9 +189,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/GoodsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/LogUtil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/PhotoUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/UriUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/widget/NineGridAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/gson/PublishGood.java" />
@@ -301,7 +201,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/PublishGoods.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_change_introduction.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/gson/TradeGoods.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_details_goods.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/MyGestureListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/OnItemTouchListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/widget/MyTextView.java" />
@@ -324,20 +223,23 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/details/DetailsGoods.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/details_photos_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/CarPoolFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryGoods.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/TradeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/GoodsAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/publish/PublishGoods.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/CarPoolAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/publish/PublishCar.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/gradle.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/Home.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/LogOn.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryCarPool.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryGoods.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/FileUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/util/PhotoUtil.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/ui/publish/PublishGoods.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_details_goods.xml" />
       </list>
     </option>
   </component>
@@ -355,7 +257,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -368,6 +269,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -399,7 +301,12 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="android" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="history" type="462c0819:PsiDirectoryNode" />
+              <item name="details" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XianxiaB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
           </expand>
           <select />
@@ -763,7 +670,21 @@
       <option name="project" value="LOCAL" />
       <updated>1589948283238</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="v0.0.1版本找出bug：&#10;当用户名（user_ID）是字符串时，发送请求时，json数据不能简单拼接。">
+      <created>1591947146351</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1591947146352</updated>
+    </task>
+    <task id="LOCAL-00020" summary="v0.0.1版本找出bug：&#10;为发布时选择图片，增加请求权限代码">
+      <created>1591949857751</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591949857751</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -777,7 +698,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14678285" />
       <window_info id="Structure" order="1" side_tool="true" />
@@ -791,7 +711,7 @@
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4966488" weight="0.30428955" />
       <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.49731904" visible="true" weight="0.27479893" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.60223645" weight="0.32573727" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.29088473" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.2904953" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.51005363" side_tool="true" weight="0.23592493" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.23324397" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
@@ -830,56 +750,14 @@
     <MESSAGE value="还差删除功能和聊天" />
     <MESSAGE value="最后考虑使用聊天组件吧" />
     <MESSAGE value="小bug已经解决现在应该就差聊天了" />
-    <option name="LAST_COMMIT_MESSAGE" value="小bug已经解决现在应该就差聊天了" />
+    <MESSAGE value="v0.0.1版本找出bug：&#10;当用户名（user_ID）是字符串时，发送请求时，json数据不能简单拼接。" />
+    <MESSAGE value="v0.0.1版本找出bug：&#10;为发布时选择图片，增加请求权限代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.0.1版本找出bug：&#10;为发布时选择图片，增加请求权限代码" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/OnItemTouchListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/widget/MyTextView.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/PhotoUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1892">
-          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/widget/NineGridAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1364">
-          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding>
-            <element signature="e#2431#2603#0" expanded="true" />
-            <element signature="e#2602#2603#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_publish_car.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/goods_item_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1016,12 +894,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1138" />
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/widget/InfoTitle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1036,29 +908,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/details/DetailsGoods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#2548#2549#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/details/DetailsGoodsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1671#1672#0" expanded="true" />
-            <element signature="e#1706#1707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryCarPoolAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1121,16 +970,6 @@
             <element signature="docComment;method#isSelectAllData#0;class#HistoryGoodsAdapter#0" />
             <element signature="docComment;method#delSelect#0;class#HistoryGoodsAdapter#0" />
             <element signature="method#setShowSelectBtn#0;class#HistoryGoodsAdapter#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryGoods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="137" column="33" selection-start-line="137" selection-start-column="33" selection-end-line="137" selection-end-column="33" />
-          <folding>
-            <element signature="method#onClick#0;class#HistoryGoods#0" />
           </folding>
         </state>
       </provider>
@@ -1201,27 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="126" column="33" selection-start-line="126" selection-start-column="33" selection-end-line="126" selection-end-column="33" />
-          <folding>
-            <element signature="method#onRequestPermissionsResult#0;class#Info#0" />
-            <element signature="method#changeSex#0;class#Info#0" />
-            <element signature="method#updatechange#0;class#Info#0" />
-            <element signature="e#14666#16530#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/CarPoolAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -1249,26 +1067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/publish/PublishGoods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="173" selection-start-line="173" selection-end-line="173" />
-          <folding>
-            <element signature="method#onBackPressed#0;class#PublishGoods#0" />
-            <element signature="method#showImageDialog#0;class#PublishGoods#0" />
-            <element signature="method#showDeletePop#0;class#PublishGoods#0" />
-            <element signature="method#onActivityResult#0;class#PublishGoods#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="79" column="34" lean-forward="true" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.5.0/1715dbac25f53b5e8b1c0f06577ebf3f66c3ae07/okhttp-4.5.0-sources.jar!/okhttp3/internal/connection/RealCall.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -1280,13 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1079">
           <caret line="120" column="138" selection-start-line="120" selection-start-column="138" selection-end-line="120" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/LogIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="138" column="54" lean-forward="true" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -1311,6 +1102,137 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/AvatarScan.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/ImageCompress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="93" column="19" lean-forward="true" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/history/HistoryGoods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="283" column="13" lean-forward="true" selection-start-line="283" selection-start-column="13" selection-end-line="283" selection-end-column="13" />
+          <folding>
+            <element signature="method#onClick#0;class#HistoryGoods#0" />
+            <element signature="e#8598#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/UriUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/LogIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="138" column="54" lean-forward="true" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/changeinfo/Info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="268" column="35" selection-start-line="268" selection-start-column="35" selection-end-line="268" selection-end-column="35" />
+          <folding>
+            <element signature="method#changeSex#0;class#Info#0" />
+            <element signature="method#updatechange#0;class#Info#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/PhotoUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/util/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="88" column="48" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/details/DetailsGoodsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/publish/PublishGoods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="100" column="25" lean-forward="true" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+          <folding>
+            <element signature="method#onBackPressed#0;class#PublishGoods#0" />
+            <element signature="method#showDeletePop#0;class#PublishGoods#0" />
+            <element signature="method#onActivityResult#0;class#PublishGoods#0" />
+            <element signature="method#uploadalldata#0;class#PublishGoods#0" />
+            <element signature="method#updatePhotos#0;class#PublishGoods#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/ui/details/DetailsGoods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#1988#2130#0" expanded="true" />
+            <element signature="e#2129#2130#0" expanded="true" />
+            <element signature="e#2548#2549#0" expanded="true" />
+            <element signature="e#2592#2593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_trade.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details_goods.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="62" column="47" lean-forward="true" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
+          <folding>
+            <element signature="e#2897#2917#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>
