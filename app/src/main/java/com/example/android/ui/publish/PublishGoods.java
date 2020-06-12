@@ -90,6 +90,7 @@ public class PublishGoods extends BaseActivity {
             public void onClick(View v) {
                 if (!"".equals(editText.getText().toString()) && mSDImageList.size() > 0) {
                     uploadalldata();
+                    button.setClickable(false);
                     return;
                 }
                 Toast.makeText(GetContext.getContext(), "内容为空，不发布", Toast.LENGTH_SHORT).show();
@@ -208,6 +209,8 @@ public class PublishGoods extends BaseActivity {
                 });
                 ischanged = true;
                 Toast.makeText(GetContext.getContext(), "发布成功", Toast.LENGTH_SHORT).show();
+                button.setClickable(true);//再进入时会重置可以不设
+
                 Intent intent = new Intent();
                 intent.putExtra("ischanged", ischanged);
                 setResult(RESULT_OK, intent);

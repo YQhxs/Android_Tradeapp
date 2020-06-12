@@ -63,7 +63,7 @@ public class PublishCar extends BaseActivity {
                     Toast.makeText(GetContext.getContext(), "内容为空，不发布", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                button.setEnabled(true);
+                button.setClickable(false);
                 PublishCarPool publishCarPool = new PublishCarPool(editText.getText().toString(), userid);
                 Gson gson = new Gson();
                 RequestBody requestBody = RequestBody.Companion.create(gson.toJson(publishCarPool), MediaType.Companion.parse("application/json"));
@@ -82,6 +82,7 @@ public class PublishCar extends BaseActivity {
 
                     }
                 });
+                button.setClickable(true);
 //                要放在异步处理之后
                 Toast.makeText(GetContext.getContext(), "发布成功", Toast.LENGTH_SHORT).show();
                 ischanged = true;
