@@ -118,7 +118,7 @@ public class LogOn extends BaseActivity implements View.OnClickListener {
                                     nextPasswordEdit.setText(null);
                                 }
                             });
-                            Toast.makeText(GetContext.getContext(), jsonObject.getString("error_description"), Toast.LENGTH_SHORT);
+                            Toast.makeText(GetContext.getContext(), jsonObject.getString("error_description"), Toast.LENGTH_SHORT).show();
                             Looper.loop();
                         }
 

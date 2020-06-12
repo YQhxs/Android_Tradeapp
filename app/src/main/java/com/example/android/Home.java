@@ -268,7 +268,7 @@ private Boolean tradeCanFresh, carCanFresh;
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 //        2,3表示拼车历史与发布，交易历史预发布
-        LogUtil.e("---", "Home接收Info传回来的状态码" + requestCode + "--" + resultCode + data.getBooleanExtra("ischanged", false));
+//        LogUtil.e("---", "Home接收Info传回来的状态码" + requestCode + "--" + resultCode + data.getBooleanExtra("ischanged", false));
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {

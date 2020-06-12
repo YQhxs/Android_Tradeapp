@@ -93,7 +93,7 @@ public class ImageCompress {
         newOpts.inSampleSize = be;// 设置缩放比例
         // 重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-        LogUtil.e("图片压缩中缩放比为", be + "size:" + bitmap.getByteCount() + "width:" + bitmap.getWidth() + "height:" + bitmap.getHeight());
+//        LogUtil.e("图片压缩中缩放比为", be + "size:" + bitmap.getByteCount() + "width:" + bitmap.getWidth() + "height:" + bitmap.getHeight());
         return compressImage(bitmap,srcPath);// 压缩好比例大小后再进行质量压缩
     }
 }

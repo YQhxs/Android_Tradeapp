@@ -433,7 +433,6 @@ public class Info extends BaseActivity implements View.OnClickListener {
     //  如果返回时，popupwindow未关闭，先关闭popupwindow
     @Override
     public void onBackPressed() {
-
         if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
         } else {
