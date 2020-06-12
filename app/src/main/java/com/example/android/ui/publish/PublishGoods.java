@@ -1,6 +1,7 @@
 package com.example.android.ui.publish;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -58,7 +59,7 @@ public class PublishGoods extends BaseActivity {
     private ImageView imageView;
     private Button button;
     private String photosname, userid, category = "日用品";
-    private PublishGood publishGood = new PublishGood();
+    private PublishGood goodsObject = new PublishGood();
     private Handler handler;
     private boolean ischanged = false;
     @Override
@@ -100,7 +101,9 @@ public class PublishGoods extends BaseActivity {
         mNineGridAdapter.setOnItemClickListener(new NineGridAdapter.OnItemClickListener() {
             @Override
             public void onTakePhotoClick() {
-                showImageDialog();
+                /*待实现：拍照选择照片*/
+                PhotoUtil.start_album(PublishGoods.this, 1);
+//                showImageDialog();
             }
 
             @Override
@@ -133,10 +136,10 @@ public class PublishGoods extends BaseActivity {
         finish();
     }
 
-    private void showImageDialog() {
-//        选择照片或拍照逻辑
-        PhotoUtil.openAlbum(this, 1);
-    }
+//    private void showImageDialog() {
+////        选择照片或拍照逻辑
+//        PhotoUtil.openAlbum(this, 1);
+//    }
 
     private void showDeletePop(View view, int position) {
 //        后期可把长按删除用户体验增强
@@ -162,7 +165,7 @@ public class PublishGoods extends BaseActivity {
                     image_uri = data.getData();
                     LogUtil.e(TAG, "在九宫格PublishGood是" + image_uri);
                     String realurl = FileUtils.getFilePathByUri(GetContext.getContext(), UriUtils.getFileUri(GetContext.getContext(), image_uri));
-                    LogUtil.e("----PublishGood从uri获取真实路径", "" + realurl);
+                    LogUtil.e(TAG, "PublishGood从uri获取真实路径" + realurl);
                     mSDImageList.add(realurl);
                     mNineGridAdapter.notifyDataSetChanged();
                 }
@@ -173,21 +176,21 @@ public class PublishGoods extends BaseActivity {
     private void uploadalldata() {
         updatePhotos(mSDImageList);
 //        其实可以不用msdImagelist参数，下面方法可以直接使用这个变量；
-        LogUtil.e(TAG, "fdsaf" + publishGood.getPhotos());
+        LogUtil.e(TAG, "九宫格里的图片" + goodsObject.getPhotos());
 //        上传所有信息
         handler = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
-                publishGood.setPhotos((String) msg.obj);
-                publishGood.setCategory(category);
-                publishGood.setIntroduction(editText.getText().toString());
-                publishGood.setTitle(editText.getText().toString());
-                publishGood.setUseid(userid);
-                publishGood.setPrice(priceEdit.getText().toString());
-                LogUtil.e(TAG, "在publishgood里面，在异步外整体数据为" + publishGood.toString());
+                goodsObject.setPhotos((String) msg.obj);
+                goodsObject.setCategory(category);
+                goodsObject.setIntroduction(editText.getText().toString());
+                goodsObject.setTitle(editText.getText().toString());
+                goodsObject.setUseid(userid);
+                goodsObject.setPrice(priceEdit.getText().toString());
+                LogUtil.e(TAG, "在publishgood里面，在异步外整体数据为" + goodsObject.toString());
                 Gson gson = new Gson();
-                RequestBody requestBody = RequestBody.Companion.create(gson.toJson(publishGood), MediaType.Companion.parse("application/json"));
+                RequestBody requestBody = RequestBody.Companion.create(gson.toJson(goodsObject), MediaType.Companion.parse("application/json"));
                 Request request = new Request.Builder()
                         .url("http://39.97.173.40:8999/transaction/addtransinfo")
                         .post(requestBody)
@@ -267,8 +270,8 @@ public class PublishGoods extends BaseActivity {
                 Images images = gson.fromJson(responsedata, new TypeToken<Images>() {
                 }.getType());
                 photosname = images.getPhotos();
-//                publishGood.setPhotos(photosname);
-//                LogUtil.e(TAG, "在publishgood里面，上传后返回的整合图片字符串" + publishGood.getPhotos());
+//                goodsObject.setPhotos(photosname);
+//                LogUtil.e(TAG, "在publishgood里面，上传后返回的整合图片字符串" + goodsObject.getPhotos());
                 Message msg = new Message();
                 msg.obj = photosname;
                 handler.sendMessage(msg);
@@ -277,5 +280,16 @@ public class PublishGoods extends BaseActivity {
 
     }
 
-
+    /**
+     * 获取权限
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            PhotoUtil.openAlbum(PublishGoods.this, 1);
+        } else {
+            Toast.makeText(GetContext.getContext(), "无法使用相册", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

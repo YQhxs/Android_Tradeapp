@@ -17,6 +17,7 @@ import java.util.Date;
 
 public class PhotoUtil {
     //打开相机
+    private static final String TAG = "PhotoUtil";
     public static String start_camera(Activity activity, int requestCode) {
         Uri imageUri;
         String storagePath;
@@ -56,26 +57,26 @@ public class PhotoUtil {
             try {
                 storagePath = GetContext.getContext().getExternalCacheDir().getAbsolutePath() + File.separator + "images";
                 storageDir = new File(storagePath);
-                LogUtil.e("----路径是否存在", "" + storageDir.exists());
+                LogUtil.e(TAG, "路径是否存在" + storageDir.exists());
                 if (!storageDir.exists()) {
                     storageDir.mkdirs();
                 }
                 outputImage = File.createTempFile(timeStamp, ".jpg", storageDir);
-                LogUtil.e("-----创建的图片路径", outputImage.getAbsolutePath());
+                LogUtil.e(TAG, "创建的图片路径" + outputImage.getAbsolutePath());
             } catch (Exception e) {
                 e.printStackTrace();
             }
             imageUri = FileProvider.getUriForFile(GetContext.getContext(), "com.example.android.fileprovider", outputImage);
             // set system camera Action
             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-            LogUtil.e("-----执行到这没1", "");
+            LogUtil.e(TAG, "执行到这没1");
             // set save photo path
             intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             activity.startActivityForResult(intent, requestCode);
             return outputImage.getAbsolutePath();
 //        }
         }
-        LogUtil.e("-----执行到这没2", "");
+        LogUtil.e(TAG, "执行到这没2");
         return null;
 //        return outputImage;
     }
@@ -87,13 +88,11 @@ public class PhotoUtil {
         } else {
             openAlbum(activity, requestCode);
         }
-        LogUtil.e("尾部直接执行么", "-----");
+        LogUtil.e(TAG, "尾部直接执行么");
     }
 
     public static void openAlbum(Activity activity, int requestCode) {
-//        Intent intent = new Intent(Intent.ACTION_PICK, null);
-//        intent.setType("image/*");
-//        activity.startActivityForResult(intent, requestCode);
+
         Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
         /**
          * 下面这句话，与其它方式写是一样的效果，如果：

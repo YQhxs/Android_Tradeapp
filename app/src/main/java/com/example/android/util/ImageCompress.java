@@ -15,26 +15,27 @@ public class ImageCompress {
      * 压缩图片（质量压缩）
      * @param bitmap
      */
+    private static final String TAG = "ImageCompress";
     public static String compressImage(Bitmap bitmap,String outputpath) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         int options = 100;
-        LogUtil.e("ImageCompress.java里面", "" + baos.toByteArray().length);
+        LogUtil.e(TAG, "" + baos.toByteArray().length);
         while (baos.toByteArray().length / 1024 > 500) {  //循环判断如果压缩后图片是否大于500kb,大于继续压缩
             baos.reset();//重置baos即清空baos
             options -= 10;//每次都减少10
             bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩到options%，把压缩后的数据存放到baos中
             long length = baos.toByteArray().length;
-            LogUtil.e("ImageCompress.java里面每次压缩后大小", "" + length);
+            LogUtil.e(TAG, "每次压缩后大小" + length);
         }
         File compressimagedir = new File(GetContext.getContext().getExternalCacheDir().getAbsolutePath() + File.separator + "compressimages");
         if (!compressimagedir.exists()) {
             compressimagedir.mkdirs();
         }
         String name = outputpath.split("/")[outputpath.split("/").length-1];
-        LogUtil.e("-----划分后文件名字",name);
+        LogUtil.e(TAG, "划分后文件名字" + name);
         File file = new File(compressimagedir,name);
-        LogUtil.e("-----新创建压缩文件",":"+file);
+        LogUtil.e(TAG, "新创建压缩文件" + file);
         try {
             FileOutputStream fos = new FileOutputStream(file);
             try {
@@ -42,11 +43,12 @@ public class ImageCompress {
                 fos.flush();
                 fos.close();
             } catch (IOException e) {
-                LogUtil.e("---压缩图片过程",e.getMessage());
+                LogUtil.e(TAG, "压缩图片过程" + e.getMessage());
                 e.printStackTrace();
             }
         } catch (FileNotFoundException e) {
-            LogUtil.e("---压缩图片过程",e.getMessage());
+            LogUtil.e(TAG, "压缩图片过程" + e.getMessage());
+
             e.printStackTrace();
         }
         recycleBitmap(bitmap);
@@ -93,7 +95,7 @@ public class ImageCompress {
         newOpts.inSampleSize = be;// 设置缩放比例
         // 重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-//        LogUtil.e("图片压缩中缩放比为", be + "size:" + bitmap.getByteCount() + "width:" + bitmap.getWidth() + "height:" + bitmap.getHeight());
+        LogUtil.e(TAG, "图片压缩中缩放比为" + be + "size:" + bitmap.getByteCount() + "width:" + bitmap.getWidth() + "height:" + bitmap.getHeight());
         return compressImage(bitmap,srcPath);// 压缩好比例大小后再进行质量压缩
     }
 }

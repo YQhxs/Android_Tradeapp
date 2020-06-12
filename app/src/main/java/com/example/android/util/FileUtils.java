@@ -11,18 +11,18 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
 public final class FileUtils {
-
+    private static final String TAG = "FileUtils";
     public static String getFilePathByUri(Context context, Uri uri) {
         String path = null;
         // 以 file:// 开头的
         if (ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
-            LogUtil.e("------景区了么","-----");
+            LogUtil.e(TAG, "进去了么1");
             path = uri.getPath();
             return path;
         }
         // 以 content:// 开头的，比如 content://media/extenral/images/media/17766
         if (ContentResolver.SCHEME_CONTENT.equals(uri.getScheme()) && Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            LogUtil.e("------景区了么2","-----");
+            LogUtil.e(TAG, "进去了么2");
             Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.Media.DATA}, null, null, null);
             if (cursor != null) {
                 if (cursor.moveToFirst()) {
@@ -39,7 +39,7 @@ public final class FileUtils {
         if (ContentResolver.SCHEME_CONTENT.equals(uri.getScheme()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (DocumentsContract.isDocumentUri(context, uri)) {
                 if (isExternalStorageDocument(uri)) {
-                    LogUtil.e("------景区了么3","-----");
+                    LogUtil.e(TAG, "进去了么3");
                     // ExternalStorageProvider
                     final String docId = DocumentsContract.getDocumentId(uri);
                     final String[] split = docId.split(":");

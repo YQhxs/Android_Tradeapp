@@ -123,7 +123,7 @@ public class Info extends BaseActivity implements View.OnClickListener {
         switch (v.getId()) {
 //            对象如果改变则对主页面的头像和名字重新请求
             case R.id.back:
-                LogUtil.e("------在返回Trade是，看user对象是否改变", user.toString());
+                LogUtil.e(TAG, "由Info返回Trade时，看user对象是否改变" + user.toString());
                 if (!ischanged) {
                     setResult(RESULT_CANCELED);
                 } else {
