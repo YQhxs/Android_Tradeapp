@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="allCategory">
+        <item>日用品</item>
+        <item>电子产品</item>
+        <item>二手衣物</item>
+    </string-array>
+</resources>
